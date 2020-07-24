@@ -1,6 +1,7 @@
 body {
   font-family: "Nunito Sans", sans-serif;
   color: var(--VeryDarkBlueDarkModeBg);
+  background-color: var(--VeryLightGray);
 }
 :root {
   --DarkBlue: hsl(209, 23%, 22%);
@@ -9,5 +10,18 @@ body {
   --DarkGray: hsl(0, 0%, 52%);
   --VeryLightGray: hsl(0, 0%, 98%);
   --White: hsl(0, 0%, 100%);
+  --shadow: rgb(204, 204, 204);
+  --headerColor:hsl(0, 0%, 100%); 
+  --ColorCads: var(--headerColor);
   font-size: 16px;
 }
+.is-dark-mode {
+  --VeryLightGray: #202D36;
+  --VeryDarkBlueLightModeT: hsl(0, 0%, 100%);
+  --DarkGray: hsl(0, 0%, 52%);
+  --VeryDarkBlueDarkModeBg: hsl(0, 0%, 100%);
+  --shadow: rgba(201, 201, 201, 0.185);
+  --headerColor: #2B3743;
+  --ColorCads: var(--headerColor);
+}
+
