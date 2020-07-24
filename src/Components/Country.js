@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+
+
 const CountryStyled = styled.div`
   width: 264px;
   text-align: left;
   border-radius: 5px;
   background-color: var(--ColorCads);
-  box-shadow: 0 0 7px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 7px 2px var(--shadow);
   overflow: hidden;
   img {
     height: 160px;
@@ -29,6 +31,7 @@ const CountryStyled = styled.div`
 `;
 
 function Country({ flag, population, region, name, capital, numericCode }) {
+  console.log(flag)
   return (
     <CountryStyled>
       <img loading="lazy" height="160" src={flag} alt={name} />

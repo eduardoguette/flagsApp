@@ -14,7 +14,7 @@ const DivHeader = styled.div`
   box-shadow: 2px 0px 5px var(--shadow);
   .header{
   color: var(--VeryDarkBlueDarkModeBg);
-  padding: 0 .5em;
+  padding: 0 1em;
   display: flex;
   width: 100%;
   justify-content: space-between;
