@@ -32,7 +32,7 @@ const CountryStyled = styled.div`
 
 function Country({ flag, population, region, name, capital, numericCode }) {
   return (
-    <CountryStyled>
+    <CountryStyled >
       <a href={`/country/${name}`}>
 
       <img loading="lazy" height="160" src={flag} alt={name} />

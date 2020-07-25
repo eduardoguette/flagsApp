@@ -20,7 +20,7 @@ const DivHeader = styled.div`
   justify-content: space-between;
   }
   i{
-  margin: 0 .5em;
+  margin: 0 1em;
   transform: rotate(-30deg);
   }
   .dark-light{
@@ -28,9 +28,12 @@ const DivHeader = styled.div`
     align-items: center;
     margin-right: .5em;
     cursor: pointer;
+    font-size: 1.1em;
   }
   a{
+    font-weight: 700;
     text-decoration: none;
+    font-size: 1.2em;
     color: var(--VeryDarkBlueDarkModeBg);
   }
 `
@@ -59,7 +62,7 @@ export default function Header() {
           {
             darkMode ? <i className="fas fa-moon"></i> : <i className="far fa-moon"></i>
           }
-          <strong>DarkMode</strong>
+          <strong>Dark Mode</strong>
         </div>
       </div>
     </DivHeader>

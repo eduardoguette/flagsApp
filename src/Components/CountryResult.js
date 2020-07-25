@@ -31,10 +31,8 @@ function CountryList({ params }) {
           setFlags(flags)
           
           setResult(false)
-          console.log("hola", result)
         }
         else{
-          console.log("chao", result)
           setResult(true)
         } 
       })
