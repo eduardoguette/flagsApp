@@ -29,6 +29,10 @@ const DivHeader = styled.div`
     margin-right: .5em;
     cursor: pointer;
   }
+  a{
+    text-decoration: none;
+    color: var(--VeryDarkBlueDarkModeBg);
+  }
 `
 
 
@@ -49,7 +53,7 @@ export default function Header() {
     <DivHeader>
       <div className="header">
         <div>
-          <strong>Where in the world?</strong>
+          <a href="/">Where in the world?</a>
         </div>
         <div className="dark-light" onClick={handleClick}>
           {

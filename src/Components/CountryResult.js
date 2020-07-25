@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import SearchHook from './SearchHook'
 import Country from "./Country.js";
-import { Link } from "wouter";
+import NoResults from "./NoResults"
 /* import { useSelector, useDispatch } from "react-redux"; */
 
 
@@ -18,47 +18,35 @@ const CountryResultStyled = styled.div`
 
 
 
-function CountryList({params}) {
+function CountryList({ params }) {
+
   const { keyword } = params
   const [flags, setFlags] = useState([]);
+  const [result, setResult] = useState(false);
 
   useEffect(function () {
     SearchHook({ keyword })
       .then(flags => {
-        
+        if (flags !== undefined){
           setFlags(flags)
-       
+          
+          setResult(false)
+          console.log("hola", result)
+        }
+        else{
+          console.log("chao", result)
+          setResult(true)
+        } 
       })
-  }, [keyword]);
+  }, [keyword, result]);
 
 
   return (
     <CountryResultStyled>
-      {
-        flags.map(({ name, region, population, capital, flag, numericCode }) => {
-          return (
-            <Link to={`/name/${keyword}`} key={numericCode}>
-              <Country
-              key={numericCode}
-              flag={flag}
-              population={population}
-              region={region}
-              name={name}
-              capital={capital}
-            />
-              
-              </Link>
-       /*      <Country
-              key={numericCode}
-              flag={flag}
-              population={population}
-              region={region}
-              name={name}
-              capital={capital}
-            /> */
-          )
-        })
-      }
+          {
+
+            result ? <NoResults/> : flags.map(({ name, region, population, capital, flag, numericCode }) =>  <Country key={numericCode} flag={flag} population={population} region={region} name={name} capital={capital}/> )  
+          }
     </CountryResultStyled>
   )
 }

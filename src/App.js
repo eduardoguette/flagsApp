@@ -5,7 +5,6 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import Header from "./Components/Header";
 import Search from "./Components/Search";
-import Select from "./Components/Select";
 import { Route } from "wouter";
 import CountryResult from "./Components/CountryResult";
 

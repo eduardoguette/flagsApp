@@ -38,7 +38,7 @@ const DivSearch = styled.div`
 
 
 function Search() {
-
+// eslint-disable-next-line
   const [keyword, setkeyword] = useState(''); // eslint-disable-next-line
   const [path, pushLocation] = useLocation();
 
