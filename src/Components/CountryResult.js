@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import SearchHook from './SearchHook'
 import Country from "./Country.js";
+
 import NoResults from "./NoResults"
 /* import { useSelector, useDispatch } from "react-redux"; */
 
@@ -13,7 +14,7 @@ const CountryResultStyled = styled.div`
   grid-row-gap: 2.3em;
   justify-content: center;
   background: var(--VeryLightGray);
-  padding: 4em 2em;
+  padding: 3em 2em;
 `;
 
 

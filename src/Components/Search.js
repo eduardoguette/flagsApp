@@ -8,108 +8,150 @@ const DivSearch = styled.div`
   grid-template-columns: 1fr;
   margin: 0;
   padding: 0;
-  input{
-    display:block;
-    margin: auto;
-    padding: 0 1em;
-    height: 60px;
-    width: calc(80% - 2em);
-    border-radius: 10px;
-    border: none;
-    font-family: inherit;
-    font-size: 1.1em;
-    color: var(--VeryDarkBlueLightModeT);
-    background-color: var(--ColorCads);
-    font-weight: 600;
-    position: relative;
-    padding-left: 5em;
-    position: sticky;
-  } 
-  ::before{
+  input {
+  display: block;
+  margin: auto;
+  padding: 0 1em;
+  height: 60px;
+  width: 240px;
+  border-radius: 10px;
+  border: none;
+  font-family: inherit;
+  font-size: .9em;
+  color: var(--VeryDarkBlueLightModeT);
+  background-color: var(--ColorCads);
+  font-weight: 600;
+  padding-left: 6em;
+  margin: auto;
+  }
+  ::before {
     content: "search";
     font-family: "Material Icons";
-    position: relative;
+    position: absolute;
     z-index: 1;
-    color: white;
-    left: 70px;
-    top: 2.7em;
-    font-size: 1.8em;
+    color: var(--VeryDarkBlueLightModeT);
+    left: 40px;
+    top: 4.4em;
+    font-size: 1.6em;
     width: 20px;
   }
-  input::placeholder{
-    font-weight: 600;
-    color: var(--colorPlaceHolder);
-    font-size: 1em;
-    padding-left: 0em;
-  }
-  input::selection{
-    content: none;
-  }
-  input:focus{    
-    outline: none;
-    border: 1px solid #CFE8F1;
-    content: "search";
+  input::placeholder {
+    font-weight: 300;
+    color: var(--VeryDarkBlueLightModeT);
+
   }
 
-  select{
-    margin: 0 3em;
-    width: 200px;
-    height: 50px;
-    outline:0px;
-    border-radius: 5px;
-    padding: 0 0 0 1em;
-    border: none;
-    color: var(--VeryDarkBlueLightModeT);
-    background-color: var(--ColorCads);
-    font-family: var(--nunito);
-  }
-  select > option{
-   
-    border-radius: 5px;
+  ul {
+ 
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    cursor: pointer;
+    width: 220px;
+    margin-left: 1em;
+    position: absolute;
+    border-radius: 7px;
     
   }
-  
+  ul > li {
+    font-size: 0.9em;
+    background-color: var(--ColorCads);
+    padding-left: 2em ;
+    padding-top: .6em ;
+    font-family: var(--nunito);
+  }
+  ul > li:not(.list-first) {
+    display: none;
+    position: relative;
+    top: 1em;
+    background-color: var(--ColorCads);
+  }
+  ul > li.list-first {
+    border-radius: 7px;
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+  ul > li.list-first::after {
+    content: "keyboard_arrow_down";
+    font-family: "Material Icons";
+    position: absolute;
+    left: 13em;
+    top: 1.2em;
+    font-weight: bold;
+    font-size: 1em;
+  }
+
+
+
+  ul > li:nth-child(2) {
+    border-radius: 7px 7px 0 0;
+
+    padding-top: 1.5em ;
+  }
+  ul > li:last-child {
+    border-radius: 0 0 7px 7px;
+    padding-bottom: 1.5em ;
+  }
+  option{
+
+    position: absolute;
+    top: 10em;
+  }
+
 `
 
 
 function Search() {
-// eslint-disable-next-line
+  // eslint-disable-next-line
   const [keyword, setkeyword] = useState(''); // eslint-disable-next-line
   const [path, pushLocation] = useLocation();
-
+  // eslint-disable-next-line
   const [option, setOpt] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(e.keyCode === 13){
-    /* 
-    setkeyword(e.target.previousElementSibling.value) */
-    pushLocation(`/country/${e.target.value}`)
+    if (e.keyCode === 13) {
+      pushLocation(`/search/${e.target.value}`)
     }
   }
-  const handleSearch = (e) => {
-    var ind = e.target.selectedIndex
-    if(ind > 0){
-      setOpt(document.querySelectorAll('select option')[ind].value)
-      
-      console.log(ind)
-      pushLocation(`/region/${e.target.value}`)
+  const handleOption = (e) => {
+    if (e.target.className === "list-first" || e.target.className === "opt-sel") {
+      document.querySelectorAll('ul > li:not(.list-first)').forEach(elem => {
+        if (elem.style.display !== "block")
+          elem.style.display = "block"
+        else
+          elem.style.display = "none"
+      })
+      if (e.target.className === "opt-sel") {
+        document.querySelector('.list-first').innerHTML = e.target.innerHTML;
+      }
+
+
     }
+    var ind = e.target.textContent;
+    if (e.target.textContent !== "Filter by Region" && e.target.className === "opt-sel") {
+      setOpt(ind)
+      pushLocation(`/region/${ind}`)
+    } else if(e.target.className === "opt-sel"){
+      pushLocation(`/`)
+    }
+
   }
 
-  const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"]
+  const regions = ["Filter by Region", "Africa", "Americas", "Asia", "Europe", "Oceania"]
   return (
     <DivSearch>
       <div className="container-form"  >
-          <input onKeyUp={handleSubmit} type="text" placeholder="Search for a country..." />
+        <input onKeyUp={handleSubmit} type="text" placeholder="Search for a country..." />
       </div>
       <div className="container-select">
-        <select onClick={handleSearch}>
-          <option>Filter by Region</option>
+        <ul onClick={handleOption}>
+          <li className="list-first" name="filter" >Filter by Region</li>
           {
-            regions.map((region, i) => <option className="opt-sel"  value={region} key={i}>{region}</option>)
+            regions.map((region, i) => <li className="opt-sel" value={region} key={i}>{region}</li>)
           }
-        </select>
+
+        </ul>
       </div>
     </DivSearch>
   )

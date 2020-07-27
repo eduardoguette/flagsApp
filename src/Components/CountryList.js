@@ -1,7 +1,9 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import getFlags from './getFlags'
 import Country from "./Country.js";
+
+
 /* import { useSelector, useDispatch } from "react-redux"; */
 
 
@@ -12,20 +14,23 @@ const CountryListStyled = styled.div`
   grid-row-gap: 2.3em;
   justify-content: center;
   background: var(--VeryLightGray);
-  padding: 4em 2em;
+  padding: 3em 2em;
 `;
 
 
 
 function CountryList() {
   const [flags, setFlags] = useState([]);
+  const [statusflags, setStatusFlags] = useState(false);
 
+  if (statusflags === false) {
+    getFlags()
+      .then(flags => {
+        setStatusFlags(true)
+        setFlags(flags)
+      })
 
-  getFlags()
-    .then(flags => {
-      setFlags(flags)
-    })
-
+  }
 
   return (
     <CountryListStyled>

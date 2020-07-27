@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 
 const CountryStyled = styled.div`
+  margin-top: 4em;
   width: 264px;
   text-align: left;
   border-radius: 5px;
@@ -33,7 +34,7 @@ const CountryStyled = styled.div`
 function Country({ flag, population, region, name, capital, numericCode }) {
   return (
     <CountryStyled >
-      <a href={`/country/${name}`}>
+      <a href={`/details/${name}`}>
 
       <img loading="lazy" height="160" src={flag} alt={name} />
       </a>
@@ -51,6 +52,7 @@ function Country({ flag, population, region, name, capital, numericCode }) {
           <strong>Capital: </strong>
           {capital}
         </p>
+
       </div>
     </CountryStyled>
   );

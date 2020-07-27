@@ -21,16 +21,12 @@ function RegionResult({ params }) {
   useEffect(function () {
     getRegions({ keyword })
       .then(flags => {
-        if (flags !== undefined) {
+       
           setFlags(flags)
-
           setResult(false)
-        }
-        else {
-          setResult(true)
-        }
+      
       })
-  }, [keyword, result]);
+  }, [keyword]);
   return (
     <RegionResultStyled>
       {

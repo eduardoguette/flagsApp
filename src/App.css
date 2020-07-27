@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 body {
   font-family: "Nunito Sans", sans-serif;
   color: var(--VeryDarkBlueDarkModeBg);
@@ -15,21 +15,23 @@ body {
   --VeryLightGray: hsl(0, 0%, 98%);
   --White: hsl(0, 0%, 100%);
   --shadow: rgba(0, 0, 0, 0.05);
-  --headerColor:hsl(0, 0%, 100%); 
+  --headerColor: hsl(0, 0%, 100%);
   --ColorCads: var(--headerColor);
-  --colorPlaceHolder: hsl(0, 0%, 78%); 
+  --colorPlaceHolder: hsl(0, 0%, 78%);
   font-size: 16px;
   --nunito: "Nunito Sans";
-  --find: ""
+  --find: "";
 }
 .is-dark-mode {
-  --VeryLightGray: #202D36;
+  --VeryLightGray: #202d36;
   --VeryDarkBlueLightModeT: hsl(0, 0%, 100%);
   --DarkGray: hsl(0, 0%, 52%);
   --VeryDarkBlueDarkModeBg: hsl(0, 0%, 100%);
-  --headerColor: #2B3743;
+  --headerColor: #2b3743;
   --ColorCads: var(--headerColor);
   --colorPlaceHolder: hsla(0, 0%, 47%, 0.856);
 }
 
-
+a{
+  text-decoration: none;
+}
