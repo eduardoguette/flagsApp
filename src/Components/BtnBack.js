@@ -17,7 +17,7 @@ const DivDetails = styled.div`
     justify-content: center;
     font-size: .9em;
     font-weight: 300;
-    box-shadow: 0px 0px 10px #1B272B;
+    box-shadow: 0px 0px 10px #1b272b38;
   }
   a{
     text-align: center;

@@ -44,7 +44,7 @@ h3{
   padding: 1em 1.5em;
   margin: .3em;
   background-color: var(--headerColor);
-  box-shadow: 0px 0px 10px #1B272B;
+  box-shadow: 0px 0px 10px #1b272b38;
  }
 }
 `

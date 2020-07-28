@@ -11,6 +11,7 @@ const DivSearch = styled.div`
   margin: 0;
   padding: 0;
 
+  margin-left: 1.3em;
   input {
   display: block;
   padding: 0 1em;
@@ -25,7 +26,6 @@ const DivSearch = styled.div`
   font-weight: 600;
   padding-left: 5em;
   outline: 0;
-  margin-left: 1.3em;
   }
   .container-form::before {
     content: "search";
@@ -51,16 +51,14 @@ const DivSearch = styled.div`
     list-style: none;
     cursor: pointer;
     width: 220px;
-    margin-left: 1.3em;
     position: absolute;
     border-radius: 7px;
-    
+
   }
   ul > li {
     font-size: 0.9em;
     background-color: var(--ColorCads);
     padding-left: 2em ;
-    padding-top: .6em ;
     font-family: var(--nunito);
   }
   ul > li:not(.list-first) {
