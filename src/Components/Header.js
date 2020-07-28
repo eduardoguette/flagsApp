@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from "styled-components"
 
 
@@ -42,16 +42,27 @@ const DivHeader = styled.div`
 
 export default function Header() {
 
-  const [darkMode, setDarkMode] = useState(false)
+
+  const [darkMode, setDarkMode] = useState(false);
+ 
   const handleClick = (e) => {
     document.body.classList.toggle('is-dark-mode')
-    if (!darkMode)
+    if (!darkMode){
       setDarkMode(true)
-    else
+      localStorage.setItem('DarkMode', 'isDark');
+
+    }else{
       setDarkMode(false)
-
+      localStorage.removeItem("DarkMode")
+    }
   }
-
+  useEffect(() => {
+    if(localStorage.getItem("DarkMode") === "isDark"){
+      document.body.className = "is-dark-mode"
+      setDarkMode(true)
+    }
+  }, [])
+  
   return (
     <DivHeader>
       <div className="header">

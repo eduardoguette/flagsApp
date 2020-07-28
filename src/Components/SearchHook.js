@@ -5,10 +5,10 @@ export default function getGif({ keyword = "spain" } = {}) {
   return fetch(apiUrl)
     .then((res) => res.json())
     .then((resp) => {
-      console.log(typeof resp.length)
+     
       if (resp.length !== undefined) {
-        const flags = resp.map(({ name, population, region, capital, numericCode, flag }) => {
-          return { name, population, region, capital, numericCode, flag }
+        const flags = resp.map(({ name, population, region, capital, numericCode, flag, currencies,languages,topLevelDomain,subregion,borders }) => {
+          return { name, population, region, capital, numericCode, flag , currencies,languages,topLevelDomain,subregion,borders}
         })
 
         return flags;

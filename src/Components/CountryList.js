@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import getFlags from './getFlags'
 import Country from "./Country.js";
-
+import Search from "./Search.js";
 
 /* import { useSelector, useDispatch } from "react-redux"; */
 
@@ -14,7 +14,7 @@ const CountryListStyled = styled.div`
   grid-row-gap: 2.3em;
   justify-content: center;
   background: var(--VeryLightGray);
-  padding: 3em 2em;
+  margin-top: 7em;
 `;
 
 
@@ -33,6 +33,8 @@ function CountryList() {
   }
 
   return (
+    <>
+    <Search />
     <CountryListStyled>
       {
         flags.map(({ name, region, population, capital, flag, numericCode }) => {
@@ -49,6 +51,7 @@ function CountryList() {
         })
       }
     </CountryListStyled>
+    </>
   )
 }
 

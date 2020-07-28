@@ -1,10 +1,7 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import "./App.css";
 import CountryList from "../src/Components/CountryList";
 import Header from "./Components/Header";
-import Search from "./Components/Search";
-import BtnBack from "./Components/BtnBack";
-
 import { Route } from "wouter";
 import CountryResult from "./Components/CountryResult";
 
@@ -19,14 +16,7 @@ function App() {
   return (
     <Fragment >
       <div className="App">
-
-
         <Header />
-        {
-          window.location.pathname.includes("search") ? <BtnBack />: <Search />
-        }
-
-
         <Route
           component={CountryList}
           path="/"

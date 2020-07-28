@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-
-
+import { Link } from "wouter"
 const CountryStyled = styled.div`
-  margin-top: 4em;
+/*   margin-top: 1em; */
   width: 264px;
   text-align: left;
   border-radius: 5px;
@@ -33,11 +32,12 @@ const CountryStyled = styled.div`
 
 function Country({ flag, population, region, name, capital, numericCode }) {
   return (
+    
     <CountryStyled >
-      <a href={`/details/${name}`}>
+      <Link to={`/details/${name}`}>
 
-      <img loading="lazy" height="160" src={flag} alt={name} />
-      </a>
+        <img loading="lazy" height="160" src={flag} alt={name} />
+      </Link>
       <div className="details">
         <h2>{name}</h2>
         <p>
@@ -55,6 +55,7 @@ function Country({ flag, population, region, name, capital, numericCode }) {
 
       </div>
     </CountryStyled>
+  
   );
 }
 export default Country;

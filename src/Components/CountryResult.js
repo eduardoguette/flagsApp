@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Fragment } from "react";
 import styled from "styled-components";
 import SearchHook from './SearchHook'
 import Country from "./Country.js";
-
+import Search from "./Search.js"
 import NoResults from "./NoResults"
-/* import { useSelector, useDispatch } from "react-redux"; */
+/* import { useSelector, useDispatch } from "react-rtedux"; */
 
 
 
@@ -14,7 +14,8 @@ const CountryResultStyled = styled.div`
   grid-row-gap: 2.3em;
   justify-content: center;
   background: var(--VeryLightGray);
-  padding: 3em 2em;
+  
+  padding: 7em 2em;
 `;
 
 
@@ -28,25 +29,28 @@ function CountryList({ params }) {
   useEffect(function () {
     SearchHook({ keyword })
       .then(flags => {
-        if (flags !== undefined){
+        if (flags !== undefined) {
           setFlags(flags)
-          
+
           setResult(false)
         }
-        else{
+        else {
           setResult(true)
-        } 
+        }
       })
   }, [keyword, result]);
 
 
   return (
-    <CountryResultStyled>
-          {
+    <Fragment>
+      <Search />
+      <CountryResultStyled>
+        {
 
-            result ? <NoResults/> : flags.map(({ name, region, population, capital, flag, numericCode }) =>  <Country key={numericCode} flag={flag} population={population} region={region} name={name} capital={capital}/> )  
-          }
-    </CountryResultStyled>
+          result ? <NoResults /> : flags.map(({ name, region, population, capital, flag, numericCode }) => <Country key={numericCode} flag={flag} population={population} region={region} name={name} capital={capital} />)
+        }
+      </CountryResultStyled>
+    </Fragment>
   )
 }
 

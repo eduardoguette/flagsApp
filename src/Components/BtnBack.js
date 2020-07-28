@@ -1,11 +1,13 @@
 import React from 'react'
 import styled from "styled-components"
+import { Link } from "wouter"
+
 const DivDetails = styled.div`
   color: var(--VeryDarkBlueLightModeT);
   .btn-back{
     border-radius: 3px;
     position: absolute;
-    margin: 1em 0 0 4em;
+    margin: 1em 0 0 2em;
     text-decoration: none;
     height: 40px;
     width: calc(120px);
@@ -15,6 +17,7 @@ const DivDetails = styled.div`
     justify-content: center;
     font-size: .9em;
     font-weight: 300;
+    box-shadow: 0px 0px 10px #1B272B;
   }
   a{
     text-align: center;
@@ -34,14 +37,13 @@ const DivDetails = styled.div`
 
 `
 
-function Details({ flag, population, region, name, capital, numericCode }) {
-  console.log(population)
+function Details() {
   return (
     <DivDetails>
       <div className="btn-back">
-        <a href="/">Back</a>
+        <Link to="/">Back</Link>
       </div>
-   
+
     </DivDetails>
   )
 }

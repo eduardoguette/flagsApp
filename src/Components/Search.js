@@ -3,17 +3,19 @@ import { useLocation } from "wouter";
 import styled from 'styled-components';
 
 const DivSearch = styled.div`
+
+
   display: grid;
   grid-row-gap: 2em;
   grid-template-columns: 1fr;
   margin: 0;
   padding: 0;
+
   input {
   display: block;
-  margin: auto;
   padding: 0 1em;
   height: 60px;
-  width: 240px;
+  width: 250px;
   border-radius: 10px;
   border: none;
   font-family: inherit;
@@ -21,14 +23,15 @@ const DivSearch = styled.div`
   color: var(--VeryDarkBlueLightModeT);
   background-color: var(--ColorCads);
   font-weight: 600;
-  padding-left: 6em;
-  margin: auto;
+  padding-left: 5em;
+  outline: 0;
+  margin-left: 1.3em;
   }
-  ::before {
+  .container-form::before {
     content: "search";
     font-family: "Material Icons";
     position: absolute;
-    z-index: 1;
+    z-index: 99999;
     color: var(--VeryDarkBlueLightModeT);
     left: 40px;
     top: 4.4em;
@@ -36,7 +39,7 @@ const DivSearch = styled.div`
     width: 20px;
   }
   input::placeholder {
-    font-weight: 300;
+    font-weight: 500;
     color: var(--VeryDarkBlueLightModeT);
 
   }
@@ -48,7 +51,7 @@ const DivSearch = styled.div`
     list-style: none;
     cursor: pointer;
     width: 220px;
-    margin-left: 1em;
+    margin-left: 1.3em;
     position: absolute;
     border-radius: 7px;
     
@@ -97,21 +100,45 @@ const DivSearch = styled.div`
     position: absolute;
     top: 10em;
   }
+  .btn-clear{
+    height: 30px;
+    width: 30px;
+    color: var(--VeryDarkBlueLightModeT);
+    position: absolute;
+    z-index: 1;
+    cursor: pointer;
+    left: 310px;
+    top: 113px;
+    text-align: center;
+  }
 
 `
 
 
 function Search() {
   // eslint-disable-next-line
-  const [keyword, setkeyword] = useState(''); // eslint-disable-next-line
   const [path, pushLocation] = useLocation();
   // eslint-disable-next-line
   const [option, setOpt] = useState("");
+  const [btn, setBtn] = useState(false);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (e.keyCode === 13) {
-      pushLocation(`/search/${e.target.value}`)
+      if(document.querySelector("input").value ===""){
+        pushLocation(`/`)
+      }else{
+       
+        pushLocation(`/search/${e.target.value}`)
+      }
+      
+    }
+    
+    if(document.querySelector("input").value ===""){
+      setBtn(false)
+    }else{
+      setBtn(true)
     }
   }
   const handleOption = (e) => {
@@ -132,27 +159,39 @@ function Search() {
     if (e.target.textContent !== "Filter by Region" && e.target.className === "opt-sel") {
       setOpt(ind)
       pushLocation(`/region/${ind}`)
-    } else if(e.target.className === "opt-sel"){
+    } else if (e.target.className === "opt-sel") {
       pushLocation(`/`)
     }
-
+    if(e.target.className ==='btn-clear'){
+      document.querySelector("input").value = ""
+      setBtn(false)
+    }
   }
+
+
 
   const regions = ["Filter by Region", "Africa", "Americas", "Asia", "Europe", "Oceania"]
   return (
     <DivSearch>
-      <div className="container-form"  >
-        <input onKeyUp={handleSubmit} type="text" placeholder="Search for a country..." />
-      </div>
-      <div className="container-select">
-        <ul onClick={handleOption}>
-          <li className="list-first" name="filter" >Filter by Region</li>
-          {
-            regions.map((region, i) => <li className="opt-sel" value={region} key={i}>{region}</li>)
-          }
+      
 
-        </ul>
-      </div>
+        <div className="container-form"  >
+          {
+            btn ?  <span onClick={handleOption}className="btn-clear">x</span> : <></>
+          }
+          <input onKeyUp={handleSubmit} type="text" placeholder="Search for a country..." />
+        </div>
+        <div className="container-select">
+          <ul onClick={handleOption}>
+            <li className="list-first" name="filter" >Filter by Region</li>
+            {
+              regions.map((region, i) => <li className="opt-sel" value={region} key={i}>{region}</li>)
+            }
+          </ul>
+        </div>
+
+      
+
     </DivSearch>
   )
 }
