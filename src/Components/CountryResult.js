@@ -15,6 +15,12 @@ const CountryResultStyled = styled.div`
   justify-content: center;
   background: var(--VeryLightGray);
   padding: 7em 2em;
+  @media screen and (min-width: 540px){
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border: 1px solid red;
+
+  }
   @media screen and (min-width: 720px){
     margin-right: 0;
     margin-left: 0;

@@ -41,6 +41,7 @@ const DivSearch = styled.div`
     width: 220px;
     border-radius: 5px;
     position: absolute;
+    z-index: 2;
    
   }
 
@@ -223,7 +224,7 @@ function Search() {
 
           <li className="list-first" >Filter by Region</li>
           {
-            regions.map((region, i) => <li className="opt-sel"  key={i}>{region}</li>)
+            regions.map((region, i) => <li className="opt-sel" key={i}>{region}</li>)
           }
         </ul>
 

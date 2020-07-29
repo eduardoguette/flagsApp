@@ -37,6 +37,7 @@ const CountryStyled = styled.div`
   }
   .go{
     position: absolute;
+    z-index: 1;
     height: 160px;
     width: 264px;
   }
