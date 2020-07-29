@@ -221,7 +221,7 @@ function Search() {
       <div className="container-select">
         <ul onClick={handleOption}>
 
-          <li className="list-first" name="filter" >Filter by Region</li>
+          <li className="list-first" >Filter by Region</li>
           {
             regions.map((region, i) => <li className="opt-sel"  key={i}>{region}</li>)
           }

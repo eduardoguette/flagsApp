@@ -48,7 +48,7 @@ function Country({ flag, population, region, name, capital, numericCode }) {
     
     <CountryStyled >
       <Link className="go" to={`/details/${name}`}>
-      &nbsp;
+      
       </Link>
         <img  src={flag} alt={name} />
       <div className="details">
