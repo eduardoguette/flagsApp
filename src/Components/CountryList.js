@@ -15,6 +15,17 @@ const CountryListStyled = styled.div`
   justify-content: center;
   background: var(--VeryLightGray);
   margin-top: 7em;
+
+  @media screen and (min-width: 720px){
+    margin-right: 0;
+    margin-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 2em;
+  
+}
+
 `;
 
 

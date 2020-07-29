@@ -17,22 +17,24 @@ function App() {
     <Fragment >
       <div className="App">
         <Header />
-        <Route
-          component={CountryList}
-          path="/"
-        />
-        <Route
-          component={CountryResult}
-          path="/search/:keyword"
-        />
-        <Route
-          component={RegionResult}
-          path="/region/:keyword"
-        />
-        <Route
-          component={CountryDetails}
-          path="/details/:keyword"
-        />
+        <div className="wrapper">
+          <Route
+            component={CountryList}
+            path="/"
+          />
+          <Route
+            component={CountryResult}
+            path="/search/:keyword"
+          />
+          <Route
+            component={RegionResult}
+            path="/region/:keyword"
+          />
+          <Route
+            component={CountryDetails}
+            path="/details/:keyword"
+          />
+        </div>
       </div>
     </Fragment>
   );

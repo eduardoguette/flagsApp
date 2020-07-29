@@ -6,7 +6,6 @@ const DivDetails = styled.div`
   color: var(--VeryDarkBlueLightModeT);
   .btn-back{
     border-radius: 3px;
-    position: absolute;
     margin: 1em 0 0 2em;
     text-decoration: none;
     height: 40px;
@@ -34,7 +33,24 @@ const DivDetails = styled.div`
   a:visited{
     color: var(--VeryDarkBlueLightModeT);
   }
-
+  @media screen and (min-width: 720px){
+   
+    width: 50%;
+    margin: 0 1.5em;
+  }
+  @media screen and (min-width: 900px){
+    
+    margin: 0 2.5em;
+  }
+  @media screen and (min-width: 1024px){
+    margin: 0 3em;
+  }
+  @media screen and (min-width: 1200px){
+    margin: 0 3.5em;
+  }
+  @media screen and (min-width: 1200px){
+    margin: 0 4em;
+  }
 `
 
 function Details() {

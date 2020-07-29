@@ -36,6 +36,17 @@ const DivHeader = styled.div`
     font-size: 1.2em;
     color: var(--VeryDarkBlueDarkModeBg);
   }
+  @media screen and (min-width: 768px){
+    height: 90px;
+    font-size: 1em;
+    .header{
+      padding: 0 2em;
+    }
+    .dark-light{
+      font-size: 1.2em;
+
+    }
+  }
 `
 
 

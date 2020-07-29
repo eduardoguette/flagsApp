@@ -17,7 +17,7 @@ body {
   --shadow: rgba(0, 0, 0, 0.05);
   --headerColor: hsl(0, 0%, 100%);
   --ColorCads: var(--headerColor);
-  --colorPlaceHolder: hsl(0, 0%, 78%);
+  --colorPlaceHolder: hsl(0, 0%, 21%);
   font-size: 16px;
   --nunito: "Nunito Sans";
   --find: "";
@@ -29,9 +29,26 @@ body {
   --VeryDarkBlueDarkModeBg: hsl(0, 0%, 100%);
   --headerColor: #2b3743;
   --ColorCads: var(--headerColor);
-  --colorPlaceHolder: hsla(0, 0%, 47%, 0.856);
+  --colorPlaceHolder: hsla(0, 0%, 65%, 0.856);
 }
 
-a{
+a {
   text-decoration: none;
+}
+
+/* @media screen and (min-width: 720px){
+  .sc-AykKE{
+    border: 1px solid red;
+    display: block;
+    display: grid;
+    flex-wrap: wrap;
+      
+    grid-column-gap: 0;
+    justify-content: space-between;
+  }
+
+} */
+.wrapper {
+  width: 90%;
+  margin: auto;
 }

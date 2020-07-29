@@ -7,8 +7,8 @@ export default function getGif({ keyword = "spain" } = {}) {
     .then((resp) => {
      
       if (resp.length !== undefined) {
-        const flags = resp.map(({ name, population, region, capital, numericCode, flag, currencies,languages,topLevelDomain,subregion,borders }) => {
-          return { name, population, region, capital, numericCode, flag , currencies,languages,topLevelDomain,subregion,borders}
+        const flags = resp.map(({ name, population, region, capital, numericCode, flag, currencies,languages,topLevelDomain,subregion,borders,nativeName }) => {
+          return { name, population, region, capital, numericCode, flag , currencies,languages,topLevelDomain,subregion,borders,nativeName}
         })
 
         return flags;

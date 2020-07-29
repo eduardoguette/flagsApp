@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from "styled-components"
 const DivNoResult = styled.div`
+margin: auto;
 display: grid;
 justify-content: center;
 text-align: center;

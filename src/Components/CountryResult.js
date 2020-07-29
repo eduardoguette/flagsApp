@@ -14,8 +14,17 @@ const CountryResultStyled = styled.div`
   grid-row-gap: 2.3em;
   justify-content: center;
   background: var(--VeryLightGray);
-  
   padding: 7em 2em;
+  @media screen and (min-width: 720px){
+    margin-right: 0;
+    margin-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 2em;
+    padding: 0;
+  
+  }
 `;
 
 
@@ -44,10 +53,10 @@ function CountryList({ params }) {
   return (
     <Fragment>
       <Search />
-      <CountryResultStyled>
+      <CountryResultStyled >
         {
 
-          result ? <NoResults /> : flags.map(({ name, region, population, capital, flag, numericCode }) => <Country key={numericCode} flag={flag} population={population} region={region} name={name} capital={capital} />)
+          result ? <NoResults /> : flags.map(({ name, region, population, capital, flag, numericCode }) => <Country className="cards-grid grid" key={numericCode} flag={flag} population={population} region={region} name={name} capital={capital} />)
         }
       </CountryResultStyled>
     </Fragment>

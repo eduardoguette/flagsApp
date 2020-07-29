@@ -9,10 +9,17 @@ const CountryStyled = styled.div`
   background-color: var(--ColorCads);
   box-shadow: 0 0 7px 2px var(--shadow);
   overflow: hidden;
+  margin: 0 1em;
   img {
     height: 160px;
     width: 100%;
     object-fit: cover;
+  }
+  img:hover{
+    cursor:pointer;
+  }
+  :hover{
+    box-shadow: 0px 0px 20px #1b272b38;
   }
   .details {
     padding: 1.5em;
@@ -31,6 +38,7 @@ const CountryStyled = styled.div`
 `;
 
 function Country({ flag, population, region, name, capital, numericCode }) {
+  const popu = new Intl.NumberFormat("en-EN").format(population)
   return (
     
     <CountryStyled >
@@ -42,7 +50,7 @@ function Country({ flag, population, region, name, capital, numericCode }) {
         <h2>{name}</h2>
         <p>
           <strong>Population: </strong>
-          {population}
+          {popu}
         </p>
         <p>
           <strong>Region: </strong>

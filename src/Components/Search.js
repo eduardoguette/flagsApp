@@ -1,23 +1,17 @@
 import React, { useState } from 'react';
 import { useLocation } from "wouter";
 import styled from 'styled-components';
-
 const DivSearch = styled.div`
 
-
   display: grid;
-  grid-row-gap: 2em;
   grid-template-columns: 1fr;
-  margin: 0;
-  padding: 0;
-
-  margin-left: 1.3em;
+  margin: 0 1em;
   input {
   display: block;
   padding: 0 1em;
   height: 60px;
-  width: 250px;
-  border-radius: 10px;
+  width: 220px;
+  border-radius: 5px;
   border: none;
   font-family: inherit;
   font-size: .9em;
@@ -26,77 +20,70 @@ const DivSearch = styled.div`
   font-weight: 600;
   padding-left: 5em;
   outline: 0;
-  }
-  .container-form::before {
-    content: "search";
-    font-family: "Material Icons";
-    position: absolute;
-    z-index: 99999;
-    color: var(--VeryDarkBlueLightModeT);
-    left: 40px;
-    top: 4.4em;
-    font-size: 1.6em;
-    width: 20px;
+  
   }
   input::placeholder {
-    font-weight: 500;
-    color: var(--VeryDarkBlueLightModeT);
+    font-weight: 600;
+    color: var(--colorPlaceHolder);
 
   }
-
+  svg{
+    position: relative;
+    top: -42px;
+    left: 30px;
+    fill:var(--VeryDarkBlueLightModeT);
+  }
   ul {
- 
     padding: 0;
     margin: 0;
     list-style: none;
     cursor: pointer;
     width: 220px;
+    border-radius: 5px;
     position: absolute;
-    border-radius: 7px;
-
+   
   }
+
   ul > li {
     font-size: 0.9em;
     background-color: var(--ColorCads);
     padding-left: 2em ;
     font-family: var(--nunito);
+    
+  }
+  li:nth-child(2){
+    padding-top: 1.5em;
   }
   ul > li:not(.list-first) {
     display: none;
-    position: relative;
-    top: 1em;
     background-color: var(--ColorCads);
   }
   ul > li.list-first {
-    border-radius: 7px;
+    border-radius: 5px;
     padding-top: 1em;
     padding-bottom: 1em;
   }
   ul > li.list-first::after {
     content: "keyboard_arrow_down";
     font-family: "Material Icons";
-    position: absolute;
-    left: 13em;
-    top: 1.2em;
+    position: relative;
+    left: 4em;
     font-weight: bold;
     font-size: 1em;
   }
 
 
+  
+
 
   ul > li:nth-child(2) {
-    border-radius: 7px 7px 0 0;
+    border-radius: 5px 5px 0 0;
 
-    padding-top: 1.5em ;
+    margin-top: 1em ;
   }
   ul > li:last-child {
-    border-radius: 0 0 7px 7px;
+    border-radius: 0 0 5px 5px;
     padding-bottom: 1.5em ;
-  }
-  option{
-
-    position: absolute;
-    top: 10em;
   }
   .btn-clear{
     height: 30px;
@@ -109,6 +96,54 @@ const DivSearch = styled.div`
     top: 113px;
     text-align: center;
   }
+  @media screen and (min-width: 720px){
+  display: flex;
+  justify-content: space-between;
+  input{
+    width: 300px;
+  }
+  ul{
+    right: 0;
+    right: 57px;
+  }
+  .btn-clear{
+    left: 380px;
+    top: 140px;
+  }
+  }
+  @media screen and (min-width: 900px) {
+  ul {
+    right: 64px;
+  }
+  .btn-clear {
+    left: 400px;
+    top: 140px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  ul {
+    right: 70px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  ul {
+    right: 80px;
+  }
+  input {
+    width: 400px;
+  }
+  .btn-clear {
+    left: 510px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  ul {
+    right: 97px;
+  }
+  .btn-clear {
+    left: 530px;
+  }
+}
 
 `
 
@@ -124,18 +159,18 @@ function Search() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (e.keyCode === 13) {
-      if(document.querySelector("input").value ===""){
+      if (document.querySelector("input").value === "") {
         pushLocation(`/`)
-      }else{
-       
-        pushLocation(`/search/${e.target.value}`)
+      } else {
+
+        pushLocation(`/search/${e.target.value.replace("venezuela","ve")}`)
       }
-      
+
     }
-    
-    if(document.querySelector("input").value ===""){
+
+    if (document.querySelector("input").value === "") {
       setBtn(false)
-    }else{
+    } else {
       setBtn(true)
     }
   }
@@ -158,9 +193,10 @@ function Search() {
       setOpt(ind)
       pushLocation(`/region/${ind}`)
     } else if (e.target.className === "opt-sel") {
+
       pushLocation(`/`)
     }
-    if(e.target.className ==='btn-clear'){
+    if (e.target.className === 'btn-clear') {
       document.querySelector("input").value = ""
       setBtn(false)
     }
@@ -171,24 +207,29 @@ function Search() {
   const regions = ["Filter by Region", "Africa", "Americas", "Asia", "Europe", "Oceania"]
   return (
     <DivSearch>
-      
 
-        <div className="container-form"  >
+
+
+      <div className="container-form"  >
+        {
+          btn ? <span onClick={handleOption} className="btn-clear">x</span> : <></>
+        }
+        <input onKeyUp={handleSubmit} type="text" placeholder="Search for a country..." />
+        {/*  <img src={search} alt="search"></img> */}
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none" /><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" /></svg>
+      </div>
+      <div className="container-select">
+        <ul onClick={handleOption}>
+
+          <li className="list-first" name="filter" >Filter by Region</li>
           {
-            btn ?  <span onClick={handleOption}className="btn-clear">x</span> : <></>
+            regions.map((region, i) => <li className="opt-sel" value={region} key={i}>{region}</li>)
           }
-          <input onKeyUp={handleSubmit} type="text" placeholder="Search for a country..." />
-        </div>
-        <div className="container-select">
-          <ul onClick={handleOption}>
-            <li className="list-first" name="filter" >Filter by Region</li>
-            {
-              regions.map((region, i) => <li className="opt-sel" value={region} key={i}>{region}</li>)
-            }
-          </ul>
-        </div>
+        </ul>
 
-      
+      </div>
+
+
 
     </DivSearch>
   )
