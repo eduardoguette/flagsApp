@@ -35,6 +35,11 @@ const CountryStyled = styled.div`
     font-size: 0.9em;
     margin-bottom: 0.5rem;
   }
+  .go{
+    position: absolute;
+    height: 160px;
+    width: 264px;
+  }
 `;
 
 function Country({ flag, population, region, name, capital, numericCode }) {
@@ -42,10 +47,10 @@ function Country({ flag, population, region, name, capital, numericCode }) {
   return (
     
     <CountryStyled >
-      <Link to={`/details/${name}`}>
+      <Link className="go" to={`/details/${name}`}>
 
-        <img loading="lazy" height="160" src={flag} alt={name} />
       </Link>
+        <img loading="lazy" src={flag} alt={name} />
       <div className="details">
         <h2>{name}</h2>
         <p>

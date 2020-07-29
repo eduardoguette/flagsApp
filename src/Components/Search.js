@@ -223,7 +223,7 @@ function Search() {
 
           <li className="list-first" name="filter" >Filter by Region</li>
           {
-            regions.map((region, i) => <li className="opt-sel" value={region} key={i}>{region}</li>)
+            regions.map((region, i) => <li className="opt-sel"  key={i}>{region}</li>)
           }
         </ul>
 
