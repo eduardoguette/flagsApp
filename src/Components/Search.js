@@ -98,21 +98,24 @@ const DivSearch = styled.div`
     text-align: center;
   }
   @media screen and (min-width: 720px){
-  display: flex;
-  justify-content: space-between;
+  
+  margin-bottom: 4em;
   input{
     width: 300px;
   }
-  ul{
+  /* ul{
     right: 0;
     right: 57px;
-  }
+  } */
   .btn-clear{
     left: 380px;
     top: 140px;
   }
   }
   @media screen and (min-width: 900px) {
+    display: flex;
+  justify-content: space-between;
+  margin-bottom: 0em;
   ul {
     right: 64px;
   }

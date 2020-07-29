@@ -12,15 +12,27 @@ const RegionResultStyled = styled.div`
   padding: 7em 0;
 
   @media screen and (min-width: 720px){
-    margin-right: 0;
-    margin-left: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 2em;
-    padding-top: 0;
-  
-  }
+    padding:  0;
+margin-right: 0;
+margin-left: 0;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+margin-top: 2em;
+}
+@media screen and (min-width: 940px){
+
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+justify-content: center;
+
+}
+@media screen and (min-width: 1024px){
+
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+}
     
 `;
 

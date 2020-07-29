@@ -15,22 +15,29 @@ const CountryResultStyled = styled.div`
   justify-content: center;
   background: var(--VeryLightGray);
   padding: 7em 2em;
-  @media screen and (min-width: 540px){
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    border: 1px solid red;
 
-  }
   @media screen and (min-width: 720px){
-    margin-right: 0;
-    margin-left: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 2em;
-    padding: 0;
-  
-  }
+
+margin-right: 0;
+margin-left: 0;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+margin-top: 2em;
+}
+@media screen and (min-width: 940px){
+
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+justify-content: center;
+
+}
+@media screen and (min-width: 1024px){
+
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+}
 `;
 
 
