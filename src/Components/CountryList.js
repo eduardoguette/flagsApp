@@ -1,12 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import getFlags from './getFlags'
 import Country from "./Country.js";
 import Search from "./Search.js";
-
-/* import { useSelector, useDispatch } from "react-redux"; */
-
-
+import { connect } from "react-redux";
 
 
 const CountryListStyled = styled.div`
@@ -16,109 +12,57 @@ const CountryListStyled = styled.div`
   background: var(--VeryLightGray);
   margin-top: 7em;
 
-  @media screen and (min-width: 720px){
-
+  @media screen and (min-width: 720px) {
     margin-right: 0;
     margin-left: 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 2em;
-}
-@media screen and (min-width: 940px){
-
+  }
+  @media screen and (min-width: 940px) {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: center;
-  
-}
-@media screen and (min-width: 1024px){
-
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
+  }
+  @media screen and (min-width: 1024px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 `;
 
-
-
-function CountryList() {
+function CountryList({ banderas, bandera }) {
   const [flags, setFlags] = useState([]);
-  const [statusflags, setStatusFlags] = useState(false);
+  useEffect(() => {
 
-  if (statusflags === false) {
-    getFlags()
-      .then(flags => {
-        setStatusFlags(true)
-        setFlags(flags)
-      })
-
-  }
+    if (bandera.length > 0) {
+      banderas.then((flags) => {
+        var tmp = flags.filter(({ name }, i) => name.toLowerCase().includes(bandera));
+        setFlags(tmp);
+      });
+    } else {
+      banderas.then((flags) => {
+        setFlags(flags);
+      });
+    }
+  }, [bandera, banderas]);
 
   return (
     <>
-    <Search />
-    <CountryListStyled>
-      {
-        flags.map(({ name, region, population, capital, flag, numericCode }) => {
-          return (
-            <Country
-              key={numericCode}
-              flag={flag}
-              population={population}
-              region={region}
-              name={name}
-              capital={capital}
-            />
-          )
-        })
-      }
-    </CountryListStyled>
+      <Search />
+      <CountryListStyled>
+        {flags.map(({ name, region, population, capital, flag, numericCode }) => {
+          return <Country key={numericCode} flag={flag} population={population} region={region} name={name} capital={capital} />;
+        })}
+      </CountryListStyled>
     </>
-  )
+  );
 }
 
-export default CountryList
-
-
-
-//function ContryList() {
-//  const dispatch = useDispatch()
-//  const countryList = useSelector((state) => //state.countryList)
-// // console.log(countryList)
-//  // const [countryList, setCountryList] = //useState([]);
-//  useEffect(() => {
-//    fetch("https://restcountries.eu/rest/v2///all")
-//      .then((resp) => resp.json())
-//      .then((list) => {
-//        dispatch({
-//          type: "SET_COUNTRY_LIST",
-//          payload: list
-//        })
-//        //  setCountryList(data);
-//     //   console.log(list.length);
-//      })
-//      .catch((err) => console.log(err));
-//  }, [dispatch]);
-//
-//  return (
-//    <CountryListStyled>
-//      {
-//        countryList.map(({ name, region, //population, capital, flag, numericCode }//) => {
-//          return (
-//            <Country
-//              key={numericCode}
-//              flag={flag}
-//              population={population}
-//              region={region}
-//              name={name}
-//              capital={capital}
-//            />
-//          )
-//        })}
-//    </CountryListStyled>
-//  );
-//}
-//export default ContryList;
-//
-//
+const mapStateToProps = (state) => ({
+  banderas: state.banderas,
+  bandera: state.bandera,
+});
+const mapDispatchToProps = (dispatch) => ({});
+export default connect(mapStateToProps, mapDispatchToProps)(CountryList);
