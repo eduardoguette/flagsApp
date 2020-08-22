@@ -190,6 +190,7 @@ function Search({ banderas, banderaSelec }) {
     }
     if (e.target.className === "btn-clear") {
       document.querySelector("input").value = "";
+      banderaSelec("");
       setBtn(false);
     }
   };

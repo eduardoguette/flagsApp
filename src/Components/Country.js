@@ -10,7 +10,7 @@ const CountryStyled = styled.div`
   box-shadow: 0 0 7px 2px var(--shadow);
   overflow: hidden;
   height: 350px;
-  margin: ${props => props.cantidadDeBanderas > 5 ? "auto" : "0 1em"};
+  margin: 0 1em;
   img {
     height: 160px;
     width: 100%;

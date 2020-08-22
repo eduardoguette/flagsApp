@@ -4,39 +4,30 @@ import Country from "./Country.js";
 import Search from "./Search.js";
 import { connect } from "react-redux";
 
-
 const CountryListStyled = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   grid-row-gap: 2.3em;
   justify-content: center;
-  margin: auto;
   background: var(--VeryLightGray);
   margin-top: 7em;
 
-  /* @media screen and (min-width: 720px) {
+  @media screen and (min-width: 720px) {
     margin-right: 0;
     margin-left: 0;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+  justify-content: ${(props) => (props.bandera > 0 ? "flex-start" : "space-between")};
     margin-top: 2em;
   }
-  @media screen and (min-width: 940px) {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    justify-content: center;
-  } */
   @media screen and (min-width: 1024px) {
+    /*  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); */
     margin-top: 3em;
-
   }
 `;
 
 function CountryList({ banderas, bandera }) {
   const [flags, setFlags] = useState([]);
   useEffect(() => {
-
     if (bandera.length > 0) {
       banderas.then((flags) => {
         var tmp = flags.filter(({ name }, i) => name.toLowerCase().includes(bandera));
@@ -52,7 +43,7 @@ function CountryList({ banderas, bandera }) {
   return (
     <>
       <Search />
-      <CountryListStyled flags={flags.length}>
+      <CountryListStyled bandera={bandera.length}>
         {flags.map(({ name, region, population, capital, flag, numericCode }) => {
           return <Country key={numericCode} cantidadDeBanderas={flags.length} flag={flag} population={population} region={region} name={name} capital={capital} />;
         })}
