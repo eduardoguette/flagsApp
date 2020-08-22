@@ -54,7 +54,7 @@ function CountryList({ banderas, bandera }) {
       <Search />
       <CountryListStyled flags={flags.length}>
         {flags.map(({ name, region, population, capital, flag, numericCode }) => {
-          return <Country key={numericCode} flag={flag} population={population} region={region} name={name} capital={capital} />;
+          return <Country key={numericCode} cantidadDeBanderas={flags.length} flag={flag} population={population} region={region} name={name} capital={capital} />;
         })}
       </CountryListStyled>
     </>
