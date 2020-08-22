@@ -7,12 +7,14 @@ import { connect } from "react-redux";
 
 const CountryListStyled = styled.div`
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   grid-row-gap: 2.3em;
   justify-content: center;
+  margin: auto;
   background: var(--VeryLightGray);
   margin-top: 7em;
 
-  @media screen and (min-width: 720px) {
+  /* @media screen and (min-width: 720px) {
     margin-right: 0;
     margin-left: 0;
     display: flex;
@@ -24,11 +26,10 @@ const CountryListStyled = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: center;
-  }
+  } */
   @media screen and (min-width: 1024px) {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    margin-top: 3em;
+
   }
 `;
 
@@ -51,7 +52,7 @@ function CountryList({ banderas, bandera }) {
   return (
     <>
       <Search />
-      <CountryListStyled>
+      <CountryListStyled flags={flags.length}>
         {flags.map(({ name, region, population, capital, flag, numericCode }) => {
           return <Country key={numericCode} flag={flag} population={population} region={region} name={name} capital={capital} />;
         })}

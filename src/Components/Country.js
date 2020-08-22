@@ -10,6 +10,7 @@ const CountryStyled = styled.div`
   box-shadow: 0 0 7px 2px var(--shadow);
   overflow: hidden;
   margin: 0 1em;
+  margin: auto;
   img {
     height: 160px;
     width: 100%;
