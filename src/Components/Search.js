@@ -89,7 +89,7 @@ const DivSearch = styled.div`
     position: absolute;
     z-index: 1;
     cursor: pointer;
-    left: 310px;
+    left: 300px;
     top: 113px;
     text-align: center;
   }
@@ -102,6 +102,7 @@ const DivSearch = styled.div`
       left: 380px;
       top: 140px;
     }
+    
   }
   @media screen and (min-width: 900px) {
     display: flex;

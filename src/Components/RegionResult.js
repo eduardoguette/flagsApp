@@ -8,20 +8,20 @@ import { connect } from "react-redux";
 
 const RegionResultStyled = styled.div`
   display: grid;
-  grid-row-gap: 2.3em;
+  grid-row-gap: 2em;
   justify-content: center;
   background: var(--VeryLightGray);
   margin-top: 7em;
   padding-bottom: 5em;
-  
-  @media screen and (min-width: 540px) {
+  grid-template-columns: repeat(auto-fit, minmax(270px, 280px));
+  justify-content: flex-start;
+  @media screen and (min-width: 720px) {
     margin-right: 0;
     margin-left: 0;
-    display: flex;
-    flex-wrap: wrap;
     justify-content: ${(props) => (props.bandera > 0 ? "flex-start" : "space-between")};
-    margin-top: 2em;
-    margin-bottom: $margin-top;
+    grid-template-columns: ${(props) => (props.bandera > 0 ? "repeat(auto-fit, minmax(270px, 280px))" : "repeat(auto-fit, minmax(270px, 1fr))")};
+    margin-top: 6em;
+    padding-bottom: $margin-top;
   }
   @media screen and (min-width: 1024px) {
     /*  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); */
