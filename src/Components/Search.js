@@ -5,12 +5,16 @@ import { connect } from "react-redux";
 const DivSearch = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  margin: 0 1em;
+  grid-template-rows: 1fr 1fr;
+  margin: 0;
+  margin: auto;
+  width: 100%;
+  height: 100%;
   input {
     display: block;
     padding: 0 1em;
-    height: 60px;
-    width: 220px;
+    height: 50px;
+    width: 74%;
     border-radius: 5px;
     border: none;
     font-family: inherit;
@@ -27,10 +31,11 @@ const DivSearch = styled.div`
   }
   svg {
     position: relative;
-    top: -42px;
+    top: -36px;
     left: 30px;
     fill: var(--VeryDarkBlueLightModeT);
   }
+
   ul {
     padding: 0;
     margin: 0;
@@ -90,19 +95,17 @@ const DivSearch = styled.div`
     z-index: 1;
     cursor: pointer;
     left: 300px;
-    top: 113px;
+    top: 110px;
     text-align: center;
   }
   @media screen and (min-width: 720px) {
-    margin-bottom: 4em;
     input {
       width: 300px;
     }
     .btn-clear {
       left: 380px;
-      top: 140px;
+      top: 110px;
     }
-    
   }
   @media screen and (min-width: 900px) {
     display: flex;
@@ -113,7 +116,7 @@ const DivSearch = styled.div`
     }
     .btn-clear {
       left: 400px;
-      top: 140px;
+      top: 135px;
     }
   }
   @media screen and (min-width: 1024px) {
@@ -151,8 +154,8 @@ function Search({ banderas, banderaSelec }) {
 
   const handleChange = (e) => {
     e.preventDefault();
-    e.target.value = e.target.value.toLowerCase();
     const busqueda = e.target.value.toLowerCase();
+
     banderaSelec(busqueda);
     if (busqueda.length > 0) setBtn(true);
     else setBtn(false);
@@ -201,9 +204,9 @@ function Search({ banderas, banderaSelec }) {
             x
           </span>
         ) : (
-          <></>
+          void 0
         )}
-        <input type="text" placeholder="Search for a country..." />
+        <input type="text" placeholder="Search for a country..." onChange={handleChange} />
         {/*  <img src={search} alt="search"></img> */}
         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
           <path d="M0 0h24v24H0z" fill="none" />

@@ -6,20 +6,20 @@ import { connect } from "react-redux";
 
 import NoResults from "./NoResults";
 const CountryListStyled = styled.div`
-   display: grid;
+  display: grid;
   grid-row-gap: 2em;
   justify-content: center;
   background: var(--VeryLightGray);
-  margin-top: 7em;
+  margin-top: 3em;
   padding-bottom: 5em;
   grid-template-columns: repeat(auto-fit, minmax(270px, 280px));
-  justify-content: flex-start;
+  justify-content: center;
   @media screen and (min-width: 720px) {
     margin-right: 0;
     margin-left: 0;
     justify-content: ${(props) => (props.bandera > 0 ? "flex-start" : "space-between")};
     grid-template-columns: ${(props) => (props.bandera > 0 ? "repeat(auto-fit, minmax(270px, 280px))" : "repeat(auto-fit, minmax(270px, 1fr))")};
-    margin-top: 6em;
+    margin-top: 2em;
     padding-bottom: $margin-top;
   }
   @media screen and (min-width: 1024px) {

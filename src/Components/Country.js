@@ -11,6 +11,7 @@ const CountryStyled = styled.div`
   overflow: hidden;
   height: 350px;
   margin: 0 1em;
+  margin: auto;
   img {
     height: 160px;
     width: 100%;
