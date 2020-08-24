@@ -5,7 +5,7 @@ export default function getRegion({ keyword = "europa" } = {}) {
   return fetch(apiUrl)
     .then((res) => res.json())
     .then((resp) => {
-      console.log(typeof resp.length)
+      
       if (resp.length !== undefined) {
         const flags = resp.map(({ name, population, region, capital, numericCode, flag }) => {
           return { name, population, region, capital, numericCode, flag }

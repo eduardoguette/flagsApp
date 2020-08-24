@@ -7,7 +7,6 @@ const DivDetails = styled.div`
   color: var(--VeryDarkBlueLightModeT);
   .btn-back {
     border-radius: 3px;
-    margin: 1em 0 0 2em;
     text-decoration: none;
     height: 40px;
     width: calc(120px);
@@ -18,6 +17,7 @@ const DivDetails = styled.div`
     font-size: 0.9em;
     font-weight: 300;
     box-shadow: 0px 0px 10px #1b272b38;
+    margin-left: .5em;
   }
   a {
     text-align: center;
@@ -36,20 +36,8 @@ const DivDetails = styled.div`
   }
   @media screen and (min-width: 720px) {
     width: 50%;
-    margin: 0 1.5em;
   }
-  @media screen and (min-width: 900px) {
-    margin: 0 2.5em;
-  }
-  @media screen and (min-width: 1024px) {
-    margin: 0 3em;
-  }
-  @media screen and (min-width: 1200px) {
-    margin: 0 3.5em;
-  }
-  @media screen and (min-width: 1200px) {
-    margin: 0 4em;
-  }
+ 
 `;
 
 function Details({ busqueda,banderaSelec }) {

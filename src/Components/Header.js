@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 
 const DivHeader = styled.div`
-  height: 70px;
+  height: 50px;
   width: auto;
   font-size: .8em;
   display: flex;

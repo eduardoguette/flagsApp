@@ -4,20 +4,22 @@ import Country from "./Country.js";
 import Search from "./Search.js";
 import { connect } from "react-redux";
 
+import NoResults from "./NoResults";
 const CountryListStyled = styled.div`
   display: grid;
-  grid-row-gap: 2.3em;
+  grid-row-gap: 2em;
   justify-content: center;
   background: var(--VeryLightGray);
   margin-top: 7em;
-
+  padding-bottom: 5em;
   @media screen and (min-width: 720px) {
     margin-right: 0;
     margin-left: 0;
     display: flex;
     flex-wrap: wrap;
-  justify-content: ${(props) => (props.bandera > 0 ? "flex-start" : "space-between")};
+    justify-content: ${(props) => (props.bandera > 0 ? "flex-start" : "space-between")};
     margin-top: 2em;
+    margin-bottom: $margin-top;
   }
   @media screen and (min-width: 1024px) {
     /*  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); */
@@ -27,11 +29,15 @@ const CountryListStyled = styled.div`
 
 function CountryList({ banderas, bandera }) {
   const [flags, setFlags] = useState([]);
+
+  const [noResutls, setNoResutls] = useState(false);
   useEffect(() => {
     if (bandera.length > 0) {
       banderas.then((flags) => {
         var tmp = flags.filter(({ name }, i) => name.toLowerCase().includes(bandera));
         setFlags(tmp);
+        if (tmp.length < 1) setNoResutls(true);
+        else setNoResutls(false);
       });
     } else {
       banderas.then((flags) => {
@@ -44,9 +50,13 @@ function CountryList({ banderas, bandera }) {
     <>
       <Search />
       <CountryListStyled bandera={bandera.length}>
-        {flags.map(({ name, region, population, capital, flag, numericCode }) => {
-          return <Country key={numericCode} cantidadDeBanderas={flags.length} flag={flag} population={population} region={region} name={name} capital={capital} />;
-        })}
+        {noResutls ? (
+          <NoResults />
+        ) : (
+          flags.map(({ name, region, population, capital, flag, numericCode }) => {
+            return <Country key={numericCode} cantidadDeBanderas={flags.length} flag={flag} population={population} region={region} name={name} capital={capital} />;
+          })
+        )}
       </CountryListStyled>
     </>
   );

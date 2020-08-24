@@ -147,39 +147,35 @@ function Search({ banderas, banderaSelec }) {
   // eslint-disable-next-line
   const [option, setOpt] = useState("");
   const [btn, setBtn] = useState(false);
- 
+
   const handleChange = (e) => {
     e.preventDefault();
     e.target.value = e.target.value.toLowerCase();
     const busqueda = e.target.value.toLowerCase();
     banderaSelec(busqueda);
+    if (busqueda.length > 0) setBtn(true);
+    else setBtn(false);
   };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (e.keyCode === 13) {
-      if (document.querySelector("input").value === "") {
-        pushLocation(`/`);
-      } else {
-        pushLocation(`/search/${e.target.value.replace("venezuela", "ve").toLowerCase()}`);
-      }
+  window.addEventListener("DOMContentLoaded", (e) => {
+    if (window.location.pathname.includes("region")) {
+      document.querySelector(".list-first").innerHTML = window.location.pathname.split("/").pop();
     }
-
-    if (document.querySelector("input").value === "") {
-      setBtn(false);
-    } else {
-      setBtn(true);
-    }
-  };
+  });
   const handleOption = (e) => {
+    if (e.target.className === "opt-sel") {
+      localStorage.setItem("region", e.target.innerHTML);
+      setTimeout(() => {
+        document.querySelector(".list-first").innerHTML = localStorage.getItem("region");
+      }, 100);
+    }
     if (e.target.className === "list-first" || e.target.className === "opt-sel") {
       document.querySelectorAll("ul > li:not(.list-first)").forEach((elem) => {
-        if (elem.style.display !== "block") elem.style.display = "block";
-        else elem.style.display = "none";
+        if (elem.style.display !== "block") {
+          elem.style.display = "block";
+        } else {
+          elem.style.display = "none";
+        }
       });
-      if (e.target.className === "opt-sel") {
-        document.querySelector(".list-first").innerHTML = e.target.innerHTML;
-      }
     }
     var ind = e.target.textContent;
     if (e.target.textContent !== "Filter by Region" && e.target.className === "opt-sel") {
@@ -206,7 +202,7 @@ function Search({ banderas, banderaSelec }) {
         ) : (
           <></>
         )}
-        <input onKeyUp={handleSubmit} type="text" placeholder="Search for a country..." />
+        <input type="text" placeholder="Search for a country..." />
         {/*  <img src={search} alt="search"></img> */}
         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
           <path d="M0 0h24v24H0z" fill="none" />

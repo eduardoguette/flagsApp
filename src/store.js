@@ -7,6 +7,7 @@ const initialState = {
 };
 // action es un objeto
 const reducerUsuarios = (state = initialState, action) => {
+
   if(action.type === "NUEVA_BUSQUEDA"){
     return {
       ...state,
